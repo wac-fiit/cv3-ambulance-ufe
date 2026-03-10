@@ -15,6 +15,8 @@ export class Cv3AmbulanceWlApp {
   @State() private relativePath = '';
 
   @Prop() basePath: string = '';
+  @Prop() apiBase: string;
+  @Prop() ambulanceId: string;
 
   componentWillLoad() {
     const baseUri = new URL(this.basePath, document.baseURI || '/').pathname;
@@ -57,7 +59,11 @@ export class Cv3AmbulanceWlApp {
         {element === 'editor' ? (
           <cv3-ambulance-wl-editor entry-id={entryId} oneditor-closed={() => navigate('./list')}></cv3-ambulance-wl-editor>
         ) : (
-          <cv3-ambulance-wl-list onentry-clicked={(ev: CustomEvent<string>) => navigate('./entry/' + ev.detail)}></cv3-ambulance-wl-list>
+          <cv3-ambulance-wl-list
+            ambulance-id={this.ambulanceId}
+            api-base={this.apiBase}
+            onentry-clicked={(ev: CustomEvent<string>) => navigate('./entry/' + ev.detail)}
+          ></cv3-ambulance-wl-list>
         )}
       </Host>
     );
