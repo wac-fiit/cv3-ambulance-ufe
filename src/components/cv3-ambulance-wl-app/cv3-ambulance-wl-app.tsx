@@ -57,7 +57,12 @@ export class Cv3AmbulanceWlApp {
     return (
       <Host>
         {element === 'editor' ? (
-          <cv3-ambulance-wl-editor entry-id={entryId} oneditor-closed={() => navigate('./list')}></cv3-ambulance-wl-editor>
+          <cv3-ambulance-wl-editor
+            entry-id={entryId}
+            ambulance-id={this.ambulanceId}
+            api-base={this.apiBase}
+            oneditor-closed={() => navigate('./list')}
+          ></cv3-ambulance-wl-editor>
         ) : (
           <cv3-ambulance-wl-list
             ambulance-id={this.ambulanceId}
