@@ -41,6 +41,8 @@ export class Cv3AmbulanceWlApp {
   }
 
   render() {
+    console.debug('cv3-ambulance-wl-app.render() - path: %s', this.relativePath);
+
     let element = 'list';
     let entryId = '@new';
 
@@ -57,12 +59,7 @@ export class Cv3AmbulanceWlApp {
     return (
       <Host>
         {element === 'editor' ? (
-          <cv3-ambulance-wl-editor
-            entry-id={entryId}
-            ambulance-id={this.ambulanceId}
-            api-base={this.apiBase}
-            oneditor-closed={() => navigate('./list')}
-          ></cv3-ambulance-wl-editor>
+          <cv3-ambulance-wl-editor entry-id={entryId} ambulance-id={this.ambulanceId} api-base={this.apiBase} oneditor-closed={() => navigate('./list')}></cv3-ambulance-wl-editor>
         ) : (
           <cv3-ambulance-wl-list
             ambulance-id={this.ambulanceId}
